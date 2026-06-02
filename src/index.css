@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #0A2540;
+  --color-brand-secondary: #FF7A00;
+  --color-brand-dark: #040d18;
+  --color-brand-accent-blue: #00E5FF;
+}
+
+/* Custom Scrollbar for premium dark feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #040d18;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a2540;
+  border-radius: 5px;
+  border: 2px solid #040d18;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7A00;
+}
+
+/* Glassmorphism utility variables/effects if needed */
+.glass {
+  background: rgba(10, 37, 64, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-accent {
+  background: rgba(255, 122, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 122, 0, 0.2);
+}
+
+/* Soft ambient glows */
+.radial-glow-blue {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.radial-glow-orange {
+  background: radial-gradient(circle, rgba(255, 122, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
