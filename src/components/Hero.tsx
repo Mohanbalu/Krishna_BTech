@@ -107,7 +107,7 @@ start_btech_journey()`
           </h2>
 
           <p className="font-sans text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl">
-            Learn <span className="text-white font-semibold underline decoration-brand-secondary decoration-2 decoration-solid">C, Java & Python</span> before college begins. Build solid confidence, develop critical coding habits, and enter engineering as a true topper.
+            Learn <span className="text-white font-semibold underline decoration-brand-secondary decoration-2 decoration-solid">Engineering Maths, B.Tech Core Subjects, & Programming</span> before college begins. Build solid confidence, develop college coding habits, and top your university scores.
           </p>
 
           {/* Key Value Pillows */}
@@ -118,7 +118,7 @@ start_btech_journey()`
             </div>
             <div className="flex items-center gap-2.5 text-xs text-gray-300">
               <Code className="text-brand-secondary shrink-0" size={18} />
-              <span>C, Java & Python</span>
+              <span>Maths, Core & Coding</span>
             </div>
             <div className="flex items-center gap-2.5 text-xs text-gray-300 col-span-2 md:col-span-1">
               <Cpu className="text-emerald-400 shrink-0" size={18} />

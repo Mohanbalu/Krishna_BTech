@@ -9,6 +9,7 @@ export interface Registration {
   mobileNumber: string;
   intermediateGroup: string;
   expectedBranch: string;
+  interestedTuition?: string;
   timestamp: string;
 }
 

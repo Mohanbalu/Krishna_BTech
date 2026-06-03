@@ -4,56 +4,56 @@
  */
 
 import { motion } from "motion/react";
-import { Code, Coffee, Binary, Server, Check } from "lucide-react";
+import { Code, Calculator, Cpu, Check } from "lucide-react";
 
 export default function WhatYouWillLearn() {
   const courses = [
     {
-      title: "C Programming",
-      tech: "THE MOTHER OF LANGUAGES",
-      description: "Learn programming fundamentals, problem solving, loops, functions, arrays, and structured thinking which are universal to all engineering paths.",
-      badge: "Highly Essential",
-      icon: Code,
+      title: "Engineering Maths",
+      tech: "UNIVERSITY ROADBLOCK DEMYSTIFIED",
+      description: "Tackle tough engineering mathematics with clear step-by-step logic. Master the formula structures and theorems needed to score the highest GPAs.",
+      badge: "Syllabus Buster",
+      icon: Calculator,
       accentColor: "border-[#00E5FF]/20 text-[#00E5FF] hover:-translate-y-2",
       iconBg: "bg-[#00E5FF]/10 text-[#00E5FF]",
       bullets: [
-        "Variables & Primitive Data types",
-        "Control Flow structures (If-Else, Switch)",
-        "Loops breakdown (For, While, Do-While)",
-        "Function parameters & memory structures",
-        "Arrays, Strings & basic Logical dry-runs"
+        "Engineering Mathematics 1 (Calculus & Multi-variable)",
+        "Engineering Mathematics 2 (Laplace, ODE & Differential)",
+        "Probability & Statistics (P&S: Distributions & Sampling)",
+        "Discrete Mathematical Structures (DM: Logic & Graphs)",
+        "Numerical Methods & Linear Algebra simplifications"
       ]
     },
     {
-      title: "Java Object-Oriented",
-      tech: "ENTERPRISE BACKBONE",
-      description: "Learn robust Object-Oriented Programming (OOP) architectures, object instantiation, classes, and modular application development fundamentals.",
-      badge: "Placement Star",
-      icon: Coffee,
+      title: "B.Tech Core Subjects",
+      tech: "COMPUTER SCIENCE & CORE ACADEMICS",
+      description: "Conquer complex technical university theory and lab papers with expert conceptual breakdowns and blueprint-focused guidance.",
+      badge: "GPA Booster",
+      icon: Cpu,
       accentColor: "border-brand-secondary/20 text-brand-secondary hover:-translate-y-2",
       iconBg: "bg-brand-secondary/10 text-brand-secondary",
       bullets: [
-        "Classes, Objects & Object References",
-        "The Four Pillars of OOP (Inheritance, Polymorphism)",
-        "Encapsulation and Data Hiding methods",
-        "Interfaces and Abstract design contracts",
-        "Practical exception handlers & file scopes"
+        "Data Structures & Algorithms (DS & DSA basics)",
+        "Database Management Systems (DBMS & SQL queries)",
+        "Operating Systems (OS) & Process management logic",
+        "Digital Electronics & Logic Design (DLD grids)",
+        "Computer Networks (CN) & Software Engineering templates"
       ]
     },
     {
-      title: "Python Programming",
-      tech: "AI & NEXT-GEN SOFTWARE",
-      description: "Learn one of the world's most popular programming languages today, extensively utilized in AI development, automation scripting, and scientific engineering.",
-      badge: "Easiest to Learn",
-      icon: Server,
+      title: "Coding & Programming",
+      tech: "PRACTICAL LABS & LOGIC",
+      description: "Go from absolute zero logic to compiling enterprise code. Gain immense confidence by programming live templates on real desktop machines.",
+      badge: "Placement Ready",
+      icon: Code,
       accentColor: "border-emerald-500/20 text-emerald-400 hover:-translate-y-2",
       iconBg: "bg-emerald-500/10 text-emerald-400",
       bullets: [
-        "Clean, human-readable Pythonic syntax",
-        "Data structures (Lists, Tuples, Dictionaries)",
-        "Core functions, modules & pip packages",
-        "Automating basic PC workflows & spreadsheets",
-        "Intro to Data analysis & AI libraries (NumPy, Pandas)"
+        "C Programming (Problem-Solving & Core Fundamentals)",
+        "Java OOPs (Classes, Inheritance & Polymorphism)",
+        "Python (Automation, Libraries & clean syntax)",
+        "Interactive error debugging on local terminals",
+        "Dry-run practices for lab exams & future assessments"
       ]
     }
   ];

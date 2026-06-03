@@ -13,6 +13,7 @@ export default function RegistrationForm() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [intermediateGroup, setIntermediateGroup] = useState("MPC");
   const [expectedBranch, setExpectedBranch] = useState("CSE (Computer Science)");
+  const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C, Java, Python)");
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -54,6 +55,7 @@ export default function RegistrationForm() {
         mobileNumber,
         intermediateGroup,
         expectedBranch,
+        interestedTuition,
         timestamp: new Date().toLocaleString()
       };
 
@@ -65,7 +67,7 @@ export default function RegistrationForm() {
       setSeatsLeft(5);
 
       // Instantly redirect to Krishna's number on WhatsApp carrying these details
-      const msg = `Hi Krishna Sir! I just registered on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}). I completed Intermediate (${newReg.intermediateGroup}) and my expected branch is ${newReg.expectedBranch}. I want to secure my offline seat for C, Java, and Python starting classes.`;
+      const msg = `Hi Krishna Sir! I just registered on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}). I completed Intermediate with *${newReg.intermediateGroup}* and my expected branch is *${newReg.expectedBranch}*. I am highly interested in joining your *${newReg.interestedTuition}* tuition category starting classes! Please block my offline seat.`;
       const waUrl = `https://wa.me/919704727292?text=${encodeURIComponent(msg)}`;
       
       try {
@@ -89,7 +91,7 @@ export default function RegistrationForm() {
   };
 
   const openWhatsAppDirect = () => {
-    const msg = `Hi Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}*. I completed Intermediate (${submittedData?.intermediateGroup}) and want to secure my offline seat for C, Java, and Python starting classes.`;
+    const msg = `Hi Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}*. I completed Intermediate with *${submittedData?.intermediateGroup}* and want to secure my offline seat in *${submittedData?.interestedTuition || "B.Tech Tuitions"}* classes.`;
     window.open(`https://wa.me/919704727292?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
@@ -192,6 +194,7 @@ export default function RegistrationForm() {
                       <p className="text-gray-300"><span className="text-gray-500">Phone:</span> {submittedData?.mobileNumber}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Group:</span> {submittedData?.intermediateGroup}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Expected Branch:</span> {submittedData?.expectedBranch}</p>
+                      <p className="text-gray-300"><span className="text-gray-500">Selected Course:</span> {submittedData?.interestedTuition || "Coding & Programming (C, Java, Python)"}</p>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
@@ -294,6 +297,24 @@ export default function RegistrationForm() {
                           <option value="Not Confirmed Yet">Not Decided Yet / counseling</option>
                         </select>
                       </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="tuitionType" className="text-xs font-bold text-gray-300 uppercase tracking-wider block">
+                        Preferred Tuition Class Category
+                      </label>
+                      <select
+                        id="tuitionType"
+                        value={interestedTuition}
+                        onChange={(e) => setInterestedTuition(e.target.value)}
+                        className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:border-brand-secondary focus:outline-none transition-all"
+                        disabled={loading}
+                      >
+                        <option value="Coding & Programming (C, Java, Python)">Coding & Programming (C, Java, Python)</option>
+                        <option value="Engineering Mathematics (M1, M2, Probability, Discrete)">Engineering Mathematics (Maths)</option>
+                        <option value="B.Tech Core Subjects (DSA, DBMS, OS, DLD)">B.Tech Core Subjects</option>
+                        <option value="Ultimate All-In-One Tuition Bundle">Ultimate All-In-One Bundle (Maths + Core + Coding)</option>
+                      </select>
                     </div>
 
                     {/* Developer Backend comment anchor */}
