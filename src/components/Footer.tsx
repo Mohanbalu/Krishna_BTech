@@ -22,10 +22,13 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="space-y-4 md:col-span-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-secondary to-yellow-400 p-0.5 flex items-center justify-center">
-              <div className="w-full h-full bg-brand-dark rounded-[9px] flex items-center justify-center">
-                <span className="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-orange-400 to-yellow-300 text-sm">K</span>
-              </div>
+            <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-brand-secondary/15 flex items-center justify-center bg-brand-primary">
+              <img 
+                src="https://i.ibb.co/Qj9WfJjM/1.jpg"
+                alt="Krishna B.Tech Solutions Logo"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <h4 className="font-display font-extrabold text-sm sm:text-base tracking-wider text-white">

@@ -73,7 +73,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
       setSeatsLeft(5);
 
       // Instantly redirect to Krishna's number on WhatsApp carrying these details
-      const msg = `Hi Krishna Sir! I just registered on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}). I completed Intermediate with *${newReg.intermediateGroup}* and my expected branch is *${newReg.expectedBranch}*. I am highly interested in joining your *${newReg.interestedTuition}* tuition category starting classes! Please block my offline seat.`;
+      const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}). I completed Intermediate with *${newReg.intermediateGroup}* and my expected branch is *${newReg.expectedBranch}*. I am highly interested in joining your *${newReg.interestedTuition}* tuition category starting classes! Please block my offline seat.`;
       const waUrl = `https://wa.me/919704727292?text=${encodeURIComponent(msg)}`;
       
       try {
@@ -97,7 +97,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   };
 
   const openWhatsAppDirect = () => {
-    const msg = `Hi Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}*. I completed Intermediate with *${submittedData?.intermediateGroup}* and want to secure my offline seat in *${submittedData?.interestedTuition || "B.Tech Tuitions"}* classes.`;
+    const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}*. I completed Intermediate with *${submittedData?.intermediateGroup}* and want to secure my offline seat in *${submittedData?.interestedTuition || "B.Tech Tuitions"}* classes.`;
     window.open(`https://wa.me/919704727292?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
@@ -122,7 +122,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
           </h2>
 
           <p className="font-sans text-gray-300 text-sm sm:text-base leading-relaxed">
-            Fill out this quick form. Your response will be cached in Guntur's batch database. Krishna Sir will personally contact you regarding trial sessions, timing preferences, and syllabus material distribution.
+            Fill out this quick form. Your response will be cached in Guntur's batch database. Director DV Krishna will personally contact you regarding trial sessions, timing preferences, and syllabus material distribution.
           </p>
 
           <div className="space-y-4 pt-4">
@@ -189,7 +189,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                         TICKET ID: {submittedData?.id || "REG_PENDING"}
                       </p>
                       <p className="text-gray-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-                        Excellent step! Your seat preference is now reserved. Please tap the WhatsApp CTA below to alert Krishna Sir directly and speed up placement.
+                        Excellent step! Your seat preference is now reserved. Please tap the WhatsApp CTA below to alert Director DV Krishna directly and speed up placement.
                       </p>
                     </div>
 

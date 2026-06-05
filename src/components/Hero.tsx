@@ -20,7 +20,7 @@ export default function Hero({ onCourseSelect }: HeroProps) {
 
 int main() {
     printf("🚀 Hello B.Tech Future Engineers!\\n");
-    printf("🔥 Master C Fundamentals with Krishna Sir\\n");
+    printf("🔥 Master C Fundamentals with DV Krishna Sir\\n");
     return 0;
 }`,
     java: `public class FutureEngineer {
@@ -64,7 +64,7 @@ start_btech_journey()`
   };
 
   const openWhatsApp = () => {
-    window.open("https://wa.me/919704727292?text=Hi%20Krishna%20Sir%2C%20I%20have%20completed%20Intermediate%20and%20want%20to%20join%20the%20B.Tech%20solutions%20coding%20program.", "_blank", "noopener,noreferrer");
+    window.open("https://wa.me/919704727292?text=Hi%20DV%20Krishna%20Sir%2C%20I%20have%20completed%20Intermediate%20and%20want%20to%20join%20the%20B.Tech%20solutions%20coding%20program.", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -79,10 +79,13 @@ start_btech_journey()`
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-secondary to-yellow-400 p-0.5 shadow-lg shadow-brand-secondary/20 flex items-center justify-center">
-              <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
-                <span className="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-orange-400 to-yellow-300 text-lg">K</span>
-              </div>
+            <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-brand-secondary/15 flex items-center justify-center bg-brand-primary">
+              <img 
+                src="https://i.ibb.co/Qj9WfJjM/1.jpg"
+                alt="Krishna B.Tech Solutions Logo"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <h1 className="font-display font-extrabold text-sm sm:text-base tracking-wider text-white">

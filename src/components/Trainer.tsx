@@ -45,7 +45,7 @@ export default function Trainer() {
           <div className="relative w-full max-w-[340px] aspect-square rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-brand-primary">
             <img
               src="https://i.ibb.co/Nd8Y5MQv/629335459-17861235021598369-4009158402246611811-n.jpg"
-              alt="Krishna - Lead CS Trainer"
+              alt="DV Krishna M.Tech - Director & Chief Mentor"
               className="w-full h-full object-cover object-center filter contrast-[1.05] brightness-[1.02]"
               referrerPolicy="no-referrer"
             />
@@ -56,8 +56,8 @@ export default function Trainer() {
             <div className="absolute bottom-4 left-4 right-4 glass px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2">
               <Star className="text-brand-secondary fill-brand-secondary shrink-0" size={16} />
               <div className="text-left">
-                <p className="text-white font-display font-bold text-xs">Krishna Sir</p>
-                <p className="text-[10px] text-gray-300">Lead Instructor (Computer Science)</p>
+                <p className="text-white font-display font-bold text-xs">DV Krishna, M.Tech</p>
+                <p className="text-[10px] text-gray-300">Director & Chief Mentor</p>
               </div>
             </div>
           </div>
@@ -77,12 +77,12 @@ export default function Trainer() {
             </div>
             
             <h2 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-              Meet Your <span className="text-[#00E5FF] font-bold">Trainer</span>
+              Meet Our <span className="text-[#00E5FF] font-bold">Director & Mentor</span>
             </h2>
           </div>
 
           <p className="font-sans text-gray-300 text-sm sm:text-base leading-relaxed">
-            Hi, I am <strong className="text-white font-semibold">Krishna</strong>. For over a decade, I have focused on simplifying code logic, training future engineering students in Pattabhipuram, Guntur, and helping them transition from complete school-level beginners into logic-building masters.
+            Hi, I am <strong className="text-white font-semibold">DV Krishna (M.Tech Computer Science)</strong>. For over a decade, I have served as the Director and Chief Mentor for engineering aspirants in Pattabhipuram, Guntur, simplifying software logic and mentoring tomorrow's top-performing university grads.
           </p>
 
           <p className="font-sans text-gray-400 text-xs sm:text-sm leading-relaxed">

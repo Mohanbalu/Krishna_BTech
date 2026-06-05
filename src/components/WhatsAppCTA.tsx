@@ -8,7 +8,7 @@ import { MessageSquare, Phone, BadgeCheck, Zap } from "lucide-react";
 
 export default function WhatsAppCTA() {
   const handleWhatsAppOpen = () => {
-    window.open("https://wa.me/919704727292?text=Hi%20Krishna%20Sir%2C%20I%20have%20completed%20Intermediate%20and%20want%20to%20know%20more%20about%20your%20B.Tech%20coding%20program.", "_blank", "noopener,noreferrer");
+    window.open("https://wa.me/919704727292?text=Hi%20DV%20Krishna%20Sir%2C%20I%20have%20completed%20Intermediate%20and%20want%20to%20know%20more%20about%20your%20B.Tech%20tuitions%20program.", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -47,7 +47,7 @@ export default function WhatsAppCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Have questions about timings, syllabus structures, or offline fee structures? Chat directly with Krishna Sir and clear all your doubts in seconds.
+            Have questions about timings, syllabus structures, or offline fee structures? Chat directly with Director DV Krishna Sir and clear all your doubts in seconds.
           </motion.p>
         </div>
 
