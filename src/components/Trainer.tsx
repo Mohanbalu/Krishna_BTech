@@ -4,27 +4,9 @@
  */
 
 import { motion } from "motion/react";
-import { Award, Briefcase, Users, Star, GraduationCap } from "lucide-react";
+import { Star } from "lucide-react";
 
 export default function Trainer() {
-  const achievements = [
-    {
-      icon: Briefcase,
-      value: "10+ Years",
-      label: "Teaching Experience"
-    },
-    {
-      icon: Users,
-      value: "5000+",
-      label: "Students Mentored"
-    },
-    {
-      icon: Award,
-      value: "100%",
-      label: "Practical Labs"
-    }
-  ];
-
   return (
     <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 md:py-24 border-t border-white/5 overflow-hidden">
       {/* Background glow specific to trainer */}
@@ -88,28 +70,6 @@ export default function Trainer() {
           <p className="font-sans text-gray-400 text-xs sm:text-sm leading-relaxed">
             I believe that B.Tech is not about rote learning definitions but writing code that works. My classes focus strictly on step-by-step dry runs and structured lab sessions, solving the real-world foundational syllabus of university frameworks.
           </p>
-
-          {/* Core Credentials Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-            {achievements.map((ach, idx) => {
-              const AchIcon = ach.icon;
-              return (
-                <div key={idx} className="glass p-4 rounded-xl border border-white/5 flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-white/5 text-[#00E5FF]">
-                    <AchIcon size={18} />
-                  </div>
-                  <div>
-                    <p className="text-white font-display font-extrabold text-sm sm:text-base leading-none">
-                      {ach.value}
-                    </p>
-                    <p className="text-[11px] text-gray-400 font-medium">
-                      {ach.label}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
 
           {/* Inspirational tagline */}
           <div className="p-4 rounded-xl bg-brand-primary/40 border-l-4 border-l-brand-secondary text-left text-xs sm:text-sm text-gray-300 italic">

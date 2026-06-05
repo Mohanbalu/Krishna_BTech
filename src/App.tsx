@@ -32,7 +32,7 @@ export default function App() {
         <WhyBeforeCollege />
 
         {/* SECTION 3: WHAT YOU WILL LEARN */}
-        <WhatYouWillLearn />
+        <WhatYouWillLearn onCourseSelect={setSelectedCourse} />
 
         {/* SECTION 4: WHO SHOULD JOIN */}
         <WhoShouldJoin />

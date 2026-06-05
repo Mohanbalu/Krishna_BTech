@@ -55,12 +55,32 @@ start_btech_journey()`
   const handleNavClick = (courseName: string) => {
     onCourseSelect?.(courseName);
     setMobileMenuOpen(false);
-    scrollToRegistration();
+    
+    let targetId = "services";
+    if (courseName.includes("Coding & Programming")) {
+      targetId = "service-programming";
+    } else if (courseName.includes("Engineering Mathematics")) {
+      targetId = "service-maths";
+    } else if (courseName.includes("B.Tech Core Subjects")) {
+      targetId = "service-core";
+    }
+
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      scrollToRegistration();
+    }
   };
 
   const handleJoinProgram = () => {
     onCourseSelect?.("Coding & Programming (C, Java, Python)");
-    scrollToRegistration();
+    const element = document.getElementById("services");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      scrollToRegistration();
+    }
   };
 
   const openWhatsApp = () => {
@@ -96,27 +116,59 @@ start_btech_journey()`
           </motion.div>
 
           {/* Desktop Navigation Links in the Center */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 bg-brand-primary/40 border border-white/5 px-6 py-2.5 rounded-full select-none text-xs font-semibold">
+          <nav className="hidden md:flex items-center gap-1 bg-brand-primary/40 border border-white/5 px-2.5 py-1.5 rounded-2xl select-none text-xs font-semibold">
+            {/* Item 1: Before B.Tech */}
             <button
               onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
-              className="text-gray-300 hover:text-brand-secondary transition-colors cursor-pointer uppercase tracking-wider relative group"
+              className="flex flex-col text-left cursor-pointer group px-3 py-1.5 bg-brand-secondary/10 border border-brand-secondary/35 rounded-xl shadow-[0_0_15px_rgba(255,107,0,0.12)] transition-all"
             >
-              Before B.Tech: Programming
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="text-[9px] text-brand-secondary tracking-wider font-extrabold uppercase leading-none">
+                  Before B.Tech
+                </span>
+                <span className="inline-flex items-center gap-1 text-[8px] font-mono text-emerald-400 bg-emerald-500/10 px-1 py-0.2 rounded border border-emerald-500/20 leading-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  RUNNING NOW
+                </span>
+              </div>
+              <span className="text-white text-xs font-semibold group-hover:text-brand-secondary transition-colors">
+                Programming Course, C & Python Batch
+              </span>
+              <span className="mt-1 w-fit text-[9px] bg-brand-secondary text-brand-dark px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">
+                Join Program &rarr;
+              </span>
             </button>
+
+            {/* Item 2: After Joining B.Tech */}
             <button
               onClick={() => handleNavClick("Engineering Mathematics (M1, M2, Probability, Discrete)")}
-              className="text-gray-300 hover:text-[#00E5FF] transition-colors cursor-pointer uppercase tracking-wider relative group"
+              className="flex flex-col text-left cursor-pointer group px-3 py-1.5 rounded-xl hover:bg-white/5 transition-all border-l border-white/5"
             >
-              After Joining B.Tech: Maths
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00E5FF] transition-all group-hover:w-full"></span>
+              <span className="text-[9px] text-[#00E5FF] tracking-wider font-extrabold uppercase leading-none mb-1">
+                After Joining B.Tech
+              </span>
+              <span className="text-white text-xs font-medium group-hover:text-[#00E5FF] transition-colors">
+                Engineering Maths
+              </span>
+              <span className="mt-1 w-fit text-[9px] bg-[#00E5FF]/20 text-[#00E5FF] px-1.5 py-0.5 rounded-md opacity-80 group-hover:opacity-100 transition-opacity font-bold uppercase tracking-wider">
+                Join &rarr;
+              </span>
             </button>
+
+            {/* Item 3: B.Tech / Diploma */}
             <button
               onClick={() => handleNavClick("B.Tech Core Subjects (DSA, DBMS, OS, DLD)")}
-              className="text-gray-300 hover:text-emerald-400 transition-colors cursor-pointer uppercase tracking-wider relative group"
+              className="flex flex-col text-left cursor-pointer group group px-3 py-1.5 rounded-xl hover:bg-white/5 transition-all border-l border-white/5"
             >
-              Core Subjects
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full"></span>
+              <span className="text-[9px] text-emerald-400 tracking-wider font-extrabold uppercase leading-none mb-1">
+                B.Tech / Diploma
+              </span>
+              <span className="text-white text-xs font-medium group-hover:text-emerald-400 transition-colors">
+                All Core Subjects
+              </span>
+              <span className="mt-1 w-fit text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-md opacity-80 group-hover:opacity-100 transition-opacity font-bold uppercase tracking-wider">
+                Join &rarr;
+              </span>
             </button>
           </nav>
 
@@ -170,24 +222,33 @@ start_btech_journey()`
               </div>
               <button
                 onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
-                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+                className="w-full text-left py-3 px-3 bg-brand-secondary/10 border border-brand-secondary/35 rounded-xl flex flex-col gap-1.5 group cursor-pointer"
               >
-                <span>Before B.Tech: Programming</span>
-                <span className="text-xs text-brand-secondary">Join &rarr;</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-brand-secondary font-extrabold uppercase tracking-wider">Before B.Tech</span>
+                  <span className="inline-flex items-center gap-1 text-[8px] font-mono text-emerald-400 bg-emerald-500/10 px-1 py-0.2 rounded border border-emerald-500/20 leading-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    RUNNING NOW
+                  </span>
+                </div>
+                <span className="text-white text-xs sm:text-sm font-semibold group-hover:text-brand-secondary transition-colors">Programming Course, C & Python Batch</span>
+                <span className="mt-0.5 w-fit text-[9px] bg-brand-secondary text-brand-dark px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Join Program &rarr;</span>
               </button>
               <button
                 onClick={() => handleNavClick("Engineering Mathematics (M1, M2, Probability, Discrete)")}
-                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+                className="w-full text-left py-2 px-3 rounded-xl hover:bg-white/5 flex flex-col gap-1 group cursor-pointer border-t border-white/5 pt-2"
               >
-                <span>After Joining B.Tech: Maths</span>
-                <span className="text-xs text-[#00E5FF]">Join &rarr;</span>
+                <span className="text-[10px] text-[#00E5FF] font-extrabold uppercase tracking-wider">After Joining B.Tech</span>
+                <span className="text-white text-xs sm:text-sm font-semibold group-hover:text-[#00E5FF] transition-colors">Engineering Maths</span>
+                <span className="mt-0.5 w-fit text-[9px] bg-[#00E5FF]/20 text-[#00E5FF] px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider">Join &rarr;</span>
               </button>
               <button
                 onClick={() => handleNavClick("B.Tech Core Subjects (DSA, DBMS, OS, DLD)")}
-                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+                className="w-full text-left py-2 px-3 rounded-xl hover:bg-white/5 flex flex-col gap-1 group cursor-pointer border-t border-white/5 pt-2"
               >
-                <span>B.Tech Core Subjects</span>
-                <span className="text-xs text-emerald-400">Join &rarr;</span>
+                <span className="text-[10px] text-emerald-400 font-extrabold uppercase tracking-wider">B.Tech / Diploma</span>
+                <span className="text-white text-xs sm:text-sm font-semibold group-hover:text-emerald-400 transition-colors">All Core Subjects</span>
+                <span className="mt-0.5 w-fit text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider">Join &rarr;</span>
               </button>
               <div className="border-t border-white/5 pt-2 flex justify-between items-center text-[10px] text-gray-400">
                 <span>📍 Offline Pattabhipuram, Guntur</span>
