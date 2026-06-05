@@ -35,8 +35,8 @@ export default function ProgramDetails() {
   ];
 
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 md:py-24 border-t border-white/5">
-      <div className="text-center space-y-4 max-w-2xl mx-auto mb-16">
+    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
+      <div className="text-center space-y-4 max-w-2xl mx-auto mb-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}

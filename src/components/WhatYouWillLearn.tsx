@@ -8,9 +8,10 @@ import { Code, Calculator, Cpu, Check, ArrowRight } from "lucide-react";
 
 interface WhatYouWillLearnProps {
   onCourseSelect?: (courseName: string) => void;
+  highlightedCourseId?: string | null;
 }
 
-export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnProps) {
+export default function WhatYouWillLearn({ onCourseSelect, highlightedCourseId }: WhatYouWillLearnProps) {
   const courses = [
     {
       id: "service-maths",
@@ -23,6 +24,7 @@ export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnPro
       accentColor: "border-[#00E5FF]/20 text-[#00E5FF] hover:-translate-y-2",
       iconBg: "bg-[#00E5FF]/10 text-[#00E5FF]",
       ctaText: "Join Maths Course",
+      highlightBorder: "border-[#00E5FF]/90 ring-4 ring-[#00E5FF]/30 scale-[1.04] shadow-[0_0_40px_rgba(0,229,255,0.45)] z-20",
       bullets: [
         "Engineering Mathematics 1 (Calculus & Multi-variable)",
         "Engineering Mathematics 2 (Laplace, ODE & Differential)",
@@ -42,11 +44,13 @@ export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnPro
       accentColor: "border-brand-secondary/20 text-brand-secondary hover:-translate-y-2",
       iconBg: "bg-brand-secondary/10 text-brand-secondary",
       ctaText: "Join Core Subjects",
+      highlightBorder: "border-brand-secondary ring-4 ring-brand-secondary/30 scale-[1.04] shadow-[0_0_40px_rgba(255,107,0,0.45)] z-20",
       bullets: [
         "Data Structures & Algorithms (DS & DSA basics)",
         "Database Management Systems (DBMS & SQL queries)",
         "Operating Systems (OS) & Process management logic",
         "Digital Electronics & Logic Design (DLD grids)",
+        "Artificial Intelligence (AI) & Machine Learning (ML)",
         "Computer Networks (CN) & Software Engineering templates"
       ]
     },
@@ -61,6 +65,7 @@ export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnPro
       accentColor: "border-emerald-500/20 text-emerald-400 hover:-translate-y-2",
       iconBg: "bg-emerald-500/10 text-emerald-400",
       ctaText: "Join Programming Batch",
+      highlightBorder: "border-emerald-400 ring-4 ring-emerald-400/30 scale-[1.04] shadow-[0_0_40px_rgba(52,211,153,0.45)] z-20",
       bullets: [
         "C Programming (Problem-Solving & Core Fundamentals)",
         "Java OOPs (Classes, Inheritance & Polymorphism)",
@@ -80,8 +85,8 @@ export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnPro
   };
 
   return (
-    <section id="services" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 md:py-24 border-t border-white/5">
-      <div className="text-center space-y-4 max-w-2xl mx-auto mb-16">
+    <section id="services" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
+      <div className="text-center space-y-4 max-w-2xl mx-auto mb-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -116,11 +121,14 @@ export default function WhatYouWillLearn({ onCourseSelect }: WhatYouWillLearnPro
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {courses.map((course, index) => {
           const IconComponent = course.icon;
+          const isHighlighted = highlightedCourseId === course.id;
           return (
             <motion.div
               key={index}
               id={course.id}
-              className={`glass flex flex-col justify-between rounded-3xl p-6 sm:p-8 border hover:shadow-2xl hover:shadow-indigo-950/10 transition-all duration-300 scroll-mt-24 ${course.accentColor}`}
+              className={`glass flex flex-col justify-between rounded-3xl p-6 sm:p-8 border hover:shadow-2xl hover:shadow-indigo-950/10 transition-all duration-300 scroll-mt-24 ${
+                isHighlighted ? course.highlightBorder : course.accentColor
+              }`}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}

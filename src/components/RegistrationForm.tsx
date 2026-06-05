@@ -14,6 +14,15 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   const [intermediateGroup, setIntermediateGroup] = useState("MPC");
   const [expectedBranch, setExpectedBranch] = useState("CSE (Computer Science)");
   const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C, Java, Python)");
+  const [activeRecentIdx, setActiveRecentIdx] = useState(0);
+
+  const recentStudents = [
+    { name: "K. Rohit Reddy", group: "MPC", choice: "Coding & Programming", branch: "CSE (AIML) Stream", time: "15 mins ago" },
+    { name: "A. Sneha Latha", group: "MPC", choice: "Engineering Mathematics", branch: "CSE Core", time: "1 hour ago" },
+    { name: "Y. Jaswanth Sai", group: "MPC", choice: "Coding & Programming", branch: "Information Technology", time: "3 hours ago" },
+    { name: "Ch. Lakshmi Pranathi", group: "MPC", choice: "B.Tech Core Subjects", branch: "ECE Stream", time: "5 hours ago" },
+    { name: "M. Abdul Rahim", group: "MPC", choice: "Coding & Programming", branch: "CS & Systems", time: "Yesterday" }
+  ];
   
   useEffect(() => {
     if (selectedCourse) {
@@ -35,6 +44,13 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
       setSubmittedData(JSON.parse(saved));
       setSeatsLeft(6); // decrease seat count locally if registered
     }
+  }, []);
+
+  useEffect(() => {
+    const rTimer = setInterval(() => {
+      setActiveRecentIdx((prev) => (prev + 1) % recentStudents.length);
+    }, 4500);
+    return () => clearInterval(rTimer);
   }, []);
 
   const handleSubmit = (e: FormEvent) => {
@@ -102,8 +118,8 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   };
 
   return (
-    <section id="register" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 md:py-24 border-t border-white/5">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="register" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Left column: persuasive layout copy & stats */}
         <motion.div 
@@ -125,7 +141,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
             Fill out this quick form. Your response will be cached in Guntur's batch database. Director DV Krishna will personally contact you regarding trial sessions, timing preferences, and syllabus material distribution.
           </p>
 
-          <div className="space-y-4 pt-4">
+          <div className="space-y-4 pt-2">
             <div className="flex gap-4 p-4 rounded-xl bg-brand-primary/40 border border-white/5">
               <div className="p-3 bg-brand-secondary/10 text-brand-secondary rounded-lg shrink-0">
                 <Ticket size={20} />
@@ -144,6 +160,42 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                 <p className="text-white text-sm font-bold">Group Discounts</p>
                 <p className="text-xs text-gray-400">Join together with 3 or more school friends for a flat 10% waiver.</p>
               </div>
+            </div>
+          </div>
+
+          {/* Recent Admissions Ticker Panel */}
+          <div className="pt-4 border-t border-white/5 space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <p className="font-mono text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">Active Registrations Feed (Guntur)</p>
+            </div>
+
+            <div className="bg-brand-primary/20 border border-white/5 rounded-2.5xl p-4 overflow-hidden min-h-[82px] relative flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeRecentIdx}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35 }}
+                  className="flex items-start justify-between gap-4"
+                >
+                  <div className="space-y-1">
+                    <p className="text-white font-medium text-xs sm:text-sm font-display">
+                      {recentStudents[activeRecentIdx].name} <span className="text-brand-secondary text-[10px] font-bold font-mono">({recentStudents[activeRecentIdx].group})</span>
+                    </p>
+                    <p className="text-gray-400 text-[11px] leading-snug">
+                      Track: <strong className="text-white font-semibold">{recentStudents[activeRecentIdx].choice}</strong> &bull; {recentStudents[activeRecentIdx].branch}
+                    </p>
+                  </div>
+                  <span className="text-[9px] text-emerald-400 font-mono font-bold shrink-0 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded leading-none select-none">
+                    {recentStudents[activeRecentIdx].time}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </motion.div>

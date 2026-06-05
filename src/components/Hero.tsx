@@ -264,7 +264,7 @@ start_btech_journey()`
         </AnimatePresence>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 py-8 md:py-14 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left column: Text copy & CTAs */}
         <motion.div 
           className="lg:col-span-7 flex flex-col text-left space-y-6 md:space-y-8"
