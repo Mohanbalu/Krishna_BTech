@@ -8,12 +8,18 @@ import { motion, AnimatePresence } from "motion/react";
 import { Send, CheckCircle2, Ticket, Users, AlertCircle } from "lucide-react";
 import { Registration } from "../types";
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ selectedCourse }: { selectedCourse?: string }) {
   const [fullName, setFullName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [intermediateGroup, setIntermediateGroup] = useState("MPC");
   const [expectedBranch, setExpectedBranch] = useState("CSE (Computer Science)");
   const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C, Java, Python)");
+  
+  useEffect(() => {
+    if (selectedCourse) {
+      setInterestedTuition(selectedCourse);
+    }
+  }, [selectedCourse]);
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");

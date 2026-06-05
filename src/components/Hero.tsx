@@ -5,10 +5,15 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { MessageSquare, ArrowRight, ShieldCheck, Sparkles, Terminal, Code, Cpu } from "lucide-react";
+import { MessageSquare, ArrowRight, ShieldCheck, Sparkles, Terminal, Code, Cpu, Menu, X } from "lucide-react";
 
-export default function Hero() {
+interface HeroProps {
+  onCourseSelect?: (course: string) => void;
+}
+
+export default function Hero({ onCourseSelect }: HeroProps) {
   const [activeCodeTab, setActiveCodeTab] = useState<"c" | "java" | "python">("c");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const codeSnippets = {
     c: `#include <stdio.h>
@@ -47,46 +52,152 @@ start_btech_journey()`
     }
   };
 
+  const handleNavClick = (courseName: string) => {
+    onCourseSelect?.(courseName);
+    setMobileMenuOpen(false);
+    scrollToRegistration();
+  };
+
+  const handleJoinProgram = () => {
+    onCourseSelect?.("Coding & Programming (C, Java, Python)");
+    scrollToRegistration();
+  };
+
   const openWhatsApp = () => {
     window.open("https://wa.me/919704727292?text=Hi%20Krishna%20Sir%2C%20I%20have%20completed%20Intermediate%20and%20want%20to%20join%20the%20B.Tech%20solutions%20coding%20program.", "_blank", "noopener,noreferrer");
   };
 
   return (
-    <header className="relative z-10 w-full flex flex-col items-center">
+    <header className="relative z-50 w-full flex flex-col items-center">
       {/* Sticky-ish elegant header */}
-      <div className="w-full max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
-        <motion.div 
-          className="flex items-center gap-3"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-secondary to-yellow-400 p-0.5 shadow-lg shadow-brand-secondary/20 flex items-center justify-center">
-            <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
-              <span className="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-orange-400 to-yellow-300 text-lg">K</span>
+      <div className="w-full max-w-7xl mx-auto px-4 py-6">
+        <div className="flex items-center justify-between">
+          <motion.div 
+            className="flex items-center gap-3 cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-secondary to-yellow-400 p-0.5 shadow-lg shadow-brand-secondary/20 flex items-center justify-center">
+              <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                <span className="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-orange-400 to-yellow-300 text-lg">K</span>
+              </div>
             </div>
-          </div>
-          <div>
-            <h1 className="font-display font-extrabold text-sm sm:text-base tracking-wider text-white">
-              KRISHNA B.TECH
-            </h1>
-            <p className="font-mono text-[9px] text-[#00E5FF] tracking-widest uppercase">SOLUTIONS</p>
-          </div>
-        </motion.div>
+            <div>
+              <h1 className="font-display font-extrabold text-sm sm:text-base tracking-wider text-white">
+                KRISHNA B.TECH
+              </h1>
+              <p className="font-mono text-[9px] text-[#00E5FF] tracking-widest uppercase">SOLUTIONS</p>
+            </div>
+          </motion.div>
 
-        {/* Highlight badge for offline classes */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="hidden md:flex items-center gap-2 bg-brand-primary/60 border border-brand-accent-blue/20 rounded-full px-4 py-2 text-xs text-brand-accent-blue"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          Offline Admissions Open (Pattabhipuram, Guntur)
-        </motion.div>
+          {/* Desktop Navigation Links in the Center */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 bg-brand-primary/40 border border-white/5 px-6 py-2.5 rounded-full select-none text-xs font-semibold">
+            <button
+              onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
+              className="text-gray-300 hover:text-brand-secondary transition-colors cursor-pointer uppercase tracking-wider relative group"
+            >
+              Before B.Tech: Programming
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
+            </button>
+            <button
+              onClick={() => handleNavClick("Engineering Mathematics (M1, M2, Probability, Discrete)")}
+              className="text-gray-300 hover:text-[#00E5FF] transition-colors cursor-pointer uppercase tracking-wider relative group"
+            >
+              After Joining B.Tech: Maths
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00E5FF] transition-all group-hover:w-full"></span>
+            </button>
+            <button
+              onClick={() => handleNavClick("B.Tech Core Subjects (DSA, DBMS, OS, DLD)")}
+              className="text-gray-300 hover:text-emerald-400 transition-colors cursor-pointer uppercase tracking-wider relative group"
+            >
+              Core Subjects
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full"></span>
+            </button>
+          </nav>
+
+          {/* Right actions (Desktop: Quick CTA or Offline Badge) */}
+          <div className="hidden lg:flex items-center gap-4">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex items-center gap-2 bg-brand-primary/60 border border-brand-accent-blue/10 rounded-full px-3 py-1.5 text-[11px] text-brand-accent-blue hover:border-brand-accent-blue/30 transition-all"
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+              </span>
+              <span>Guntur Offline</span>
+            </motion.div>
+            <button
+              onClick={handleJoinProgram}
+              className="bg-brand-secondary hover:bg-orange-600 text-white font-display font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1 cursor-pointer transition-all shadow-md shadow-brand-secondary/10"
+            >
+              Join Program
+              <ArrowRight size={12} />
+            </button>
+          </div>
+
+          {/* Mobile Navigator Hamburguer Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-gray-400 hover:text-white bg-brand-primary/60 border border-white/5 rounded-xl cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Dropdown Menu Panel */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="md:hidden mt-4 overflow-hidden bg-brand-primary/95 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-2xl relative z-50 text-left"
+            >
+              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest border-b border-white/5 pb-2">
+                Course Tuitions & Core Tracks
+              </div>
+              <button
+                onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
+                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+              >
+                <span>Before B.Tech: Programming</span>
+                <span className="text-xs text-brand-secondary">Join &rarr;</span>
+              </button>
+              <button
+                onClick={() => handleNavClick("Engineering Mathematics (M1, M2, Probability, Discrete)")}
+                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+              >
+                <span>After Joining B.Tech: Maths</span>
+                <span className="text-xs text-[#00E5FF]">Join &rarr;</span>
+              </button>
+              <button
+                onClick={() => handleNavClick("B.Tech Core Subjects (DSA, DBMS, OS, DLD)")}
+                className="w-full text-left py-2.5 px-3 rounded-xl hover:bg-white/5 text-gray-200 text-sm font-semibold flex items-center justify-between group cursor-pointer"
+              >
+                <span>B.Tech Core Subjects</span>
+                <span className="text-xs text-emerald-400">Join &rarr;</span>
+              </button>
+              <div className="border-t border-white/5 pt-2 flex justify-between items-center text-[10px] text-gray-400">
+                <span>📍 Offline Pattabhipuram, Guntur</span>
+                <button 
+                  onClick={handleJoinProgram} 
+                  className="font-bold text-brand-secondary uppercase tracking-wider"
+                >
+                  Join &rarr;
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -130,7 +241,7 @@ start_btech_journey()`
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <motion.button
               id="cta-join-now"
-              onClick={scrollToRegistration}
+              onClick={handleJoinProgram}
               whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(255, 122, 0, 0.4)" }}
               whileTap={{ scale: 0.98 }}
               className="bg-gradient-to-r from-brand-secondary to-amber-500 hover:to-orange-600 text-white font-display font-bold px-8 py-4 rounded-xl text-md shadow-lg shadow-brand-secondary/20 cursor-pointer flex items-center justify-center gap-2 group transition-all"

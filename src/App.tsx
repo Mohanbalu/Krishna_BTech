@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from "react";
 import GlowBackground from "./components/GlowBackground";
 import Hero from "./components/Hero";
 import WhyBeforeCollege from "./components/WhyBeforeCollege";
@@ -16,6 +17,8 @@ import WhatsAppCTA from "./components/WhatsAppCTA";
 import Footer from "./components/Footer";
 
 export default function App() {
+  const [selectedCourse, setSelectedCourse] = useState("Coding & Programming (C, Java, Python)");
+
   return (
     <div className="relative min-h-screen text-white bg-brand-dark overflow-x-hidden selection:bg-brand-secondary/30 selection:text-white">
       {/* Absolute Ambient Background Layer */}
@@ -23,7 +26,7 @@ export default function App() {
 
       <main className="relative z-10 w-full flex flex-col items-center">
         {/* SECTION 1: HERO */}
-        <Hero />
+        <Hero onCourseSelect={setSelectedCourse} />
 
         {/* SECTION 2: WHY THIS PROGRAM */}
         <WhyBeforeCollege />
@@ -44,7 +47,7 @@ export default function App() {
         <WhyChooseUs />
 
         {/* SECTION 8: REGISTRATION SECTION */}
-        <RegistrationForm />
+        <RegistrationForm selectedCourse={selectedCourse} />
 
         {/* SECTION 9: WHATSAPP CTA SECTION */}
         <WhatsAppCTA />
