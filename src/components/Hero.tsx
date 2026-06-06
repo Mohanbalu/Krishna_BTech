@@ -81,6 +81,62 @@ start_basic_python()`
 
   return (
     <header className="relative z-50 w-full flex flex-col items-center">
+      {/* Alert Top Banner: Programming Batch Active */}
+      <motion.div 
+        initial={{ opacity: 0, y: -60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 90, damping: 14 }}
+        className="w-full bg-gradient-to-r from-teal-950 via-slate-900 to-[#121424] text-white py-3.5 px-4 sm:px-6 shadow-[0_4px_30px_rgba(0,229,255,0.12)] border-b border-[#00E5FF]/20 relative z-50 overflow-hidden font-sans"
+      >
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            {/* Active Status Badge with premium motion pulse */}
+            <motion.span 
+              animate={{ 
+                borderColor: ["rgba(0,229,255,0.2)", "rgba(0,229,255,0.6)", "rgba(0,229,255,0.2)"],
+                boxShadow: [
+                  "0 0 0px rgba(0,229,255,0)", 
+                  "0 0 10px rgba(0,229,255,0.25)", 
+                  "0 0 0px rgba(0,229,255,0)"
+                ]
+              }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="inline-flex items-center gap-2 bg-black/40 border px-3 py-1.5 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-[#00E5FF] select-none shrink-0"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5FF] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00E5FF]"></span>
+              </span>
+              OFFICIAL ANNOUNCEMENT
+            </motion.span>
+
+            <div className="space-y-0.5">
+              <h4 className="text-sm sm:text-base font-black tracking-tight flex items-center justify-center sm:justify-start gap-1.5 uppercase text-white">
+                <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
+                Coding &amp; Programming Batch is Now Active!
+              </h4>
+              <p className="text-[11px] sm:text-xs text-gray-300 font-medium">
+                Bridge the gap before colleges begin. Real classroom instruction with DV Krishna. Limited seats available!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="hidden lg:inline text-xs font-bold text-teal-400 bg-teal-500/10 px-3 py-1.5 rounded-lg border border-teal-500/20">
+              🚀 Offline Admissions Open
+            </span>
+            <motion.button 
+              onClick={scrollToRegistration}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0,229,255,0.3)" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-[#00E5FF] to-cyan-500 text-brand-dark px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold hover:brightness-110 active:scale-95 transition-all uppercase tracking-wider cursor-pointer shadow-[0_8px_20px_rgba(0,184,212,0.15)] focus:outline-none focus:ring-2 focus:ring-[#00E5FF] select-none whitespace-nowrap"
+            >
+              Get Started Now &rarr;
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Sticky-ish elegant header */}
       <div className="w-full max-w-7xl mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
