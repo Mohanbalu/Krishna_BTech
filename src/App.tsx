@@ -12,6 +12,7 @@ import Trainer from "./components/Trainer";
 import Reviews from "./components/Reviews";
 import RegistrationForm from "./components/RegistrationForm";
 import Footer from "./components/Footer";
+import FloatingActions from "./components/FloatingActions";
 
 export default function App() {
   const [selectedCourse, setSelectedCourse] = useState("Coding & Programming (C, Java, Python)");
@@ -67,6 +68,9 @@ export default function App() {
 
         {/* SECTION 10: FOOTER */}
         <Footer />
+
+        {/* FLOATING SOCIAL & ASSISTANT ACTIONS */}
+        <FloatingActions />
       </main>
     </div>
   );

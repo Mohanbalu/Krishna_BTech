@@ -215,19 +215,19 @@ start_basic_python()`
             </button>
           </nav>
 
-          {/* Right actions (Desktop: Quick CTA or Offline Badge) */}
+          {/* Right actions (Desktop: Quick CTA or Offline/Online Badge) */}
           <div className="hidden lg:flex items-center gap-4">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex items-center gap-2 bg-brand-primary/60 border border-brand-accent-blue/10 rounded-full px-3 py-1.5 text-[11px] text-brand-accent-blue hover:border-brand-accent-blue/30 transition-all"
+              className="flex items-center gap-2 bg-brand-primary/60 border border-[#00E5FF]/20 rounded-full px-3 py-1.5 text-[11px] text-[#00E5FF] hover:border-[#00E5FF]/40 transition-all"
             >
               <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5FF] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00E5FF]"></span>
               </span>
-              <span>Guntur Offline</span>
+              <span>Online / Offline</span>
             </motion.div>
             <button
               onClick={handleJoinProgram}
@@ -294,7 +294,7 @@ start_basic_python()`
                 <span className="mt-0.5 w-fit text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider">Join &rarr;</span>
               </button>
               <div className="border-t border-white/5 pt-2 flex justify-between items-center text-[10px] text-gray-400">
-                <span>📍 Offline Pattabhipuram, Guntur</span>
+                <span>📍 Online &amp; Offline Regular Classes</span>
                 <button 
                   onClick={handleJoinProgram} 
                   className="font-bold text-brand-secondary uppercase tracking-wider"
@@ -348,7 +348,7 @@ start_basic_python()`
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-1 bg-white/[0.02] border border-white/5 rounded-xl max-w-lg">
             <div className="flex items-center gap-1.5 text-[11px] text-gray-300 px-2 py-0.5">
               <ShieldCheck className="text-[#00E5FF] shrink-0" size={15} />
-              <span>Guntur Offline</span>
+              <span>Online / Offline</span>
             </div>
             <div className="flex items-center gap-1.5 text-[11px] text-gray-300 px-2 py-0.5">
               <Code className="text-brand-secondary shrink-0" size={15} />
