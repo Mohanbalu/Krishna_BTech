@@ -9,9 +9,8 @@ import Hero from "./components/Hero";
 import WhyBeforeCollege from "./components/WhyBeforeCollege";
 import WhatYouWillLearn from "./components/WhatYouWillLearn";
 import Trainer from "./components/Trainer";
-import ProgramDetails from "./components/ProgramDetails";
+import Reviews from "./components/Reviews";
 import RegistrationForm from "./components/RegistrationForm";
-import WhatsAppCTA from "./components/WhatsAppCTA";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -60,14 +59,11 @@ export default function App() {
         {/* SECTION 5: TRAINER SECTION */}
         <Trainer />
 
-        {/* SECTION 6: PROGRAM DETAILS */}
-        <ProgramDetails />
+        {/* SECTION 6: STUDENT REVIEWS */}
+        <Reviews />
 
         {/* SECTION 8: REGISTRATION SECTION */}
         <RegistrationForm selectedCourse={selectedCourse} />
-
-        {/* SECTION 9: WHATSAPP CTA SECTION */}
-        <WhatsAppCTA />
 
         {/* SECTION 10: FOOTER */}
         <Footer />

@@ -10,6 +10,7 @@ export interface Registration {
   intermediateGroup: string;
   expectedBranch: string;
   interestedTuition?: string;
+  learningMode?: string;
   timestamp: string;
 }
 

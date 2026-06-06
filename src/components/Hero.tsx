@@ -67,12 +67,7 @@ start_basic_python()`
 
   const handleJoinProgram = () => {
     onCourseSelect?.("Coding & Programming (C & Python)");
-    const element = document.getElementById("services");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    } else {
-      scrollToRegistration();
-    }
+    scrollToRegistration();
   };
 
   const openWhatsApp = () => {
@@ -123,7 +118,7 @@ start_basic_python()`
 
           <div className="flex items-center gap-3 shrink-0">
             <span className="hidden lg:inline text-xs font-bold text-teal-400 bg-teal-500/10 px-3 py-1.5 rounded-lg border border-teal-500/20">
-              🚀 Offline Admissions Open
+              🚀 Online &amp; Offline Admissions Open
             </span>
             <motion.button 
               onClick={scrollToRegistration}
@@ -149,7 +144,7 @@ start_basic_python()`
           >
             <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-brand-secondary/15 flex items-center justify-center bg-brand-primary">
               <img 
-                src="https://i.ibb.co/Qj9WfJjM/1.jpg"
+                src="https://i.ibb.co/9mdbvhzb/1.jpg"
                 alt="Krishna B.Tech Solutions Logo"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

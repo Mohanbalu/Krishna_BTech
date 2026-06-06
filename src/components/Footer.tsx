@@ -4,17 +4,10 @@
  */
 
 import { motion } from "motion/react";
-import { MapPin, Phone, Code, Mail } from "lucide-react";
+import { MapPin, Phone, Code, Mail, Instagram, Globe, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <footer className="relative z-10 w-full bg-brand-dark/90 border-t border-white/5 pt-16 pb-8 text-left text-xs sm:text-sm text-gray-400">
@@ -24,7 +17,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-brand-secondary/15 flex items-center justify-center bg-brand-primary">
               <img 
-                src="https://i.ibb.co/Qj9WfJjM/1.jpg"
+                src="https://i.ibb.co/9mdbvhzb/1.jpg"
                 alt="Krishna B.Tech Solutions Logo"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -42,43 +35,10 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links Column */}
-        <div className="space-y-4 text-left">
-          <h5 className="font-display text-white font-bold text-xs uppercase tracking-wider">
-            Quick Navigation
-          </h5>
-          <ul className="space-y-2 text-xs font-medium">
-            <li>
-              <button 
-                onClick={() => handleScrollTo("register")} 
-                className="hover:text-[#00E5FF] transition-colors cursor-pointer"
-              >
-                Join Program
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => handleScrollTo("register")} 
-                className="hover:text-brand-secondary transition-colors cursor-pointer"
-              >
-                Register Inquiry
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Back To Top
-              </button>
-            </li>
-          </ul>
-        </div>
-
         {/* Contact/Location Column */}
         <div className="space-y-4 text-left">
-          <h5 className="font-display text-white font-bold text-xs uppercase tracking-wider">
-            Location & Contact
+          <h5 className="font-display text-white font-bold text-xs uppercase tracking-wider text-[#00E5FF]">
+            Location &amp; Contact
           </h5>
           <ul className="space-y-3 font-medium text-xs">
             <li className="flex items-start gap-2">
@@ -94,6 +54,51 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <Mail className="text-emerald-400 shrink-0" size={14} />
               <span className="text-gray-400 select-all">krishnatutition.coachings@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Official Directory & Social Column */}
+        <div className="space-y-4 text-left">
+          <h5 className="font-display text-white font-bold text-xs uppercase tracking-wider text-brand-secondary">
+            Follow Us &amp; Reviews
+          </h5>
+          <ul className="space-y-3 font-medium text-xs">
+            <li className="flex items-center gap-2.5">
+              <Instagram className="text-amber-500 shrink-0" size={14} />
+              <a 
+                href="https://www.instagram.com/krishnabtechtuitions?utm_source=qr&igsh=aWtiOGN5MGp5ajJ5" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1 group"
+              >
+                Instagram Profile
+                <ExternalLink size={10} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <MapPin className="text-emerald-400 shrink-0" size={14} />
+              <a 
+                href="https://share.google/oYW7gyOef6G1DKiBN" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1 group"
+              >
+                Google Location &amp; Reviews
+                <ExternalLink size={10} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Globe className="text-[#00E5FF] shrink-0" size={14} />
+              <a 
+                href="https://jsdl.in/DT-99EVEUDNTNA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1 group"
+              >
+                Justdial Profile
+                <ExternalLink size={10} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+              </a>
             </li>
           </ul>
         </div>

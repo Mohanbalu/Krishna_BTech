@@ -5,7 +5,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Send, CheckCircle2, Ticket, Users, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, Ticket, Users, AlertCircle, MapPin, Laptop } from "lucide-react";
 import { Registration } from "../types";
 
 export default function RegistrationForm({ selectedCourse }: { selectedCourse?: string }) {
@@ -15,6 +15,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   const [intermediateGroup, setIntermediateGroup] = useState("MPC");
   const [expectedBranch, setExpectedBranch] = useState("CSE (Computer Science)");
   const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C & Python)");
+  const [learningMode, setLearningMode] = useState<"offline" | "online">("offline");
   const [activeRecentIdx, setActiveRecentIdx] = useState(0);
 
   const recentStudents = [
@@ -97,6 +98,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
         intermediateGroup,
         expectedBranch,
         interestedTuition,
+        learningMode: learningMode === "offline" ? "Offline (Guntur Classroom)" : "Online (Live Remote)",
         timestamp: new Date().toLocaleString()
       };
 
@@ -111,8 +113,9 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
       const batchMode = registrationType === "before" ? "Before B.Tech Batch" : "After B.Tech Batch";
       const grpLabel = registrationType === "before" ? "Intermediate Group" : "Stream/Group";
       const brchLabel = registrationType === "before" ? "Expected B.Tech Branch" : "B.Tech Branch/Specialization";
+      const learnModeStr = learningMode === "offline" ? "Offline (Guntur Classroom)" : "Online (Live Remote)";
 
-      const msg = `Hi DV Krishna Sir! I just registered for the *${batchMode}* on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}).\n\n*Details:*\n- ${grpLabel}: *${newReg.intermediateGroup}*\n- ${brchLabel}: *${newReg.expectedBranch}*\n- Course Preferred: *${newReg.interestedTuition}*\n\nPlease block my offline seat.`;
+      const msg = `Hi DV Krishna Sir! I just registered for the *${batchMode}* on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}).\n\n*Details:*\n- ${grpLabel}: *${newReg.intermediateGroup}*\n- ${brchLabel}: *${newReg.expectedBranch}*\n- Course Preferred: *${newReg.interestedTuition}*\n- Learning Mode: *${learnModeStr}*\n\nPlease block my seat.`;
       const waUrl = `https://wa.me/919704727292?text=${encodeURIComponent(msg)}`;
       
       try {
@@ -139,7 +142,8 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
     const batchMode = registrationType === "before" ? "Before B.Tech Batch" : "After B.Tech Batch";
     const grpLabel = registrationType === "before" ? "Intermediate Group" : "Stream/Group";
     const brchLabel = registrationType === "before" ? "Expected B.Tech Branch" : "B.Tech Branch/Specialization";
-    const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}* for the *${batchMode}*.\n\n*Details:*\n- ${grpLabel}: *${submittedData?.intermediateGroup}*\n- ${brchLabel}: *${submittedData?.expectedBranch}*\n- Course: *${submittedData?.interestedTuition || "Selected Tuition"}`;
+    const modeLabel = submittedData?.learningMode || "Offline/Online";
+    const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}* for the *${batchMode}*.\n\n*Details:*\n- ${grpLabel}: *${submittedData?.intermediateGroup}*\n- ${brchLabel}: *${submittedData?.expectedBranch}*\n- Course: *${submittedData?.interestedTuition || "Selected Tuition"}*\n- Mode: *${modeLabel}*`;
     window.open(`https://wa.me/919704727292?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
@@ -279,6 +283,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                       <p className="text-gray-300"><span className="text-gray-500">Group:</span> {submittedData?.intermediateGroup}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Expected Branch:</span> {submittedData?.expectedBranch}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Selected Course:</span> {submittedData?.interestedTuition || "Coding & Programming (C & Python)"}</p>
+                      <p className="text-gray-300"><span className="text-gray-500">Learning Mode:</span> {submittedData?.learningMode || "Offline Regular"}</p>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
@@ -451,6 +456,45 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                           </>
                         )}
                       </select>
+                    </div>
+
+                    {/* Preferred Learning Mode (Online and Offline options) */}
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-gray-300 uppercase tracking-wider block">
+                        Preferred Learning Mode
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setLearningMode("offline")}
+                          className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs font-bold transition-all border cursor-pointer select-none ${
+                            learningMode === "offline"
+                              ? "bg-brand-primary/80 border-[#00E5FF]/40 text-[#00E5FF] shadow-[0_4px_15px_rgba(0,229,255,0.15)] font-black"
+                              : "bg-brand-dark/40 border-white/10 text-gray-400 hover:text-white"
+                          }`}
+                        >
+                          <MapPin size={14} className={learningMode === "offline" ? "text-[#00E5FF]" : "text-gray-500"} />
+                          <div className="text-left">
+                            <span className="block text-[11px] uppercase tracking-wider">Offline Regular</span>
+                            <span className="text-[9px] font-normal opacity-70">Guntur Classroom</span>
+                          </div>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setLearningMode("online")}
+                          className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs font-bold transition-all border cursor-pointer select-none ${
+                            learningMode === "online"
+                              ? "bg-brand-primary/80 border-[#00E5FF]/40 text-[#00E5FF] shadow-[0_4px_15px_rgba(0,229,255,0.15)] font-black"
+                              : "bg-brand-dark/40 border-white/10 text-gray-400 hover:text-white"
+                          }`}
+                        >
+                          <Laptop size={14} className={learningMode === "online" ? "text-[#00E5FF]" : "text-gray-500"} />
+                          <div className="text-left">
+                            <span className="block text-[11px] uppercase tracking-wider">Online Classes</span>
+                            <span className="text-[9px] font-normal opacity-70">Live Interactive Meet</span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Developer Backend comment anchor */}
