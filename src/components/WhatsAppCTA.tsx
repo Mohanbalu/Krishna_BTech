@@ -12,7 +12,7 @@ export default function WhatsAppCTA() {
   };
 
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
+    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 border-t border-white/5">
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950/40 via-brand-primary/40 to-brand-dark border border-emerald-500/20 p-8 sm:p-12 md:p-16 text-center space-y-8">
         
         {/* Soft glowing backgrounds inside banner */}

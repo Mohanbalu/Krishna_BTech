@@ -35,8 +35,8 @@ export default function WhyBeforeCollege() {
   ];
 
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14">
-      <div className="text-center space-y-4 max-w-2xl mx-auto mb-10">
+    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-6 md:py-8">
+      <div className="text-center space-y-4 max-w-2xl mx-auto mb-8">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,28 +74,25 @@ export default function WhyBeforeCollege() {
           return (
             <motion.div
               key={index}
-              className="glass relative group overflow-hidden rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start text-left hover:border-white/20 transition-colors"
+              className="glass relative group overflow-hidden rounded-2xl p-5 sm:p-6 flex items-center gap-5 text-left hover:border-white/20 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -4 }}
             >
               {/* Corner lights effect */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.01] group-hover:bg-brand-secondary/5 rounded-full blur-2xl transition-all" />
 
               {/* Icon container */}
               <div className={`p-4 rounded-xl shrink-0 bg-gradient-to-tr ${point.gradient} text-white shadow-md shadow-black/20`}>
-                <IconComponent size={24} />
+                <IconComponent size={22} />
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-display font-bold text-white text-lg sm:text-xl group-hover:text-brand-secondary transition-colors">
+              <div className="space-y-1">
+                <h3 className="font-display font-bold text-white text-base sm:text-lg group-hover:text-brand-secondary transition-colors leading-snug">
                   {point.title}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                  {point.description}
-                </p>
               </div>
             </motion.div>
           );

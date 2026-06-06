@@ -8,10 +8,8 @@ import GlowBackground from "./components/GlowBackground";
 import Hero from "./components/Hero";
 import WhyBeforeCollege from "./components/WhyBeforeCollege";
 import WhatYouWillLearn from "./components/WhatYouWillLearn";
-import WhoShouldJoin from "./components/WhoShouldJoin";
 import Trainer from "./components/Trainer";
 import ProgramDetails from "./components/ProgramDetails";
-import WhyChooseUs from "./components/WhyChooseUs";
 import RegistrationForm from "./components/RegistrationForm";
 import WhatsAppCTA from "./components/WhatsAppCTA";
 import Footer from "./components/Footer";
@@ -59,17 +57,11 @@ export default function App() {
         {/* SECTION 3: WHAT YOU WILL LEARN */}
         <WhatYouWillLearn onCourseSelect={handleCourseSelect} highlightedCourseId={highlightedCourseId} />
 
-        {/* SECTION 4: WHO SHOULD JOIN */}
-        <WhoShouldJoin />
-
         {/* SECTION 5: TRAINER SECTION */}
         <Trainer />
 
         {/* SECTION 6: PROGRAM DETAILS */}
         <ProgramDetails />
-
-        {/* SECTION 7: WHY STUDENTS CHOOSE US */}
-        <WhyChooseUs />
 
         {/* SECTION 8: REGISTRATION SECTION */}
         <RegistrationForm selectedCourse={selectedCourse} />

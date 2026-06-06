@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="font-sans leading-relaxed text-gray-500 max-w-sm">
-            Bridging the gap between secondary school college and high-speed engineering computer science. Master logic, bypass labs stress, and become a pro early.
+            We provide tuitions for students before joining B.Tech and support their on-boarding with coding foundations, core logic, and college preparations.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail className="text-emerald-400 shrink-0" size={14} />
-              <span className="text-gray-500 select-none">support@krishna-btech.com</span>
+              <span className="text-gray-400 select-all">krishnatutition.coachings@gmail.com</span>
             </li>
           </ul>
         </div>

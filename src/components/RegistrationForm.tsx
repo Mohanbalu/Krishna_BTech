@@ -11,9 +11,10 @@ import { Registration } from "../types";
 export default function RegistrationForm({ selectedCourse }: { selectedCourse?: string }) {
   const [fullName, setFullName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
+  const [registrationType, setRegistrationType] = useState<"before" | "after">("before");
   const [intermediateGroup, setIntermediateGroup] = useState("MPC");
   const [expectedBranch, setExpectedBranch] = useState("CSE (Computer Science)");
-  const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C, Java, Python)");
+  const [interestedTuition, setInterestedTuition] = useState("Coding & Programming (C & Python)");
   const [activeRecentIdx, setActiveRecentIdx] = useState(0);
 
   const recentStudents = [
@@ -27,8 +28,26 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   useEffect(() => {
     if (selectedCourse) {
       setInterestedTuition(selectedCourse);
+      if (selectedCourse.includes("Coding & Programming") || selectedCourse.includes("C & Python")) {
+        setRegistrationType("before");
+      } else {
+        setRegistrationType("after");
+      }
     }
   }, [selectedCourse]);
+
+  const handleTypeChange = (type: "before" | "after") => {
+    setRegistrationType(type);
+    if (type === "before") {
+      setIntermediateGroup("MPC");
+      setExpectedBranch("CSE (Computer Science)");
+      setInterestedTuition("Coding & Programming (C & Python)");
+    } else {
+      setIntermediateGroup("B.Tech Student");
+      setExpectedBranch("CSE (Computer Science)");
+      setInterestedTuition("Engineering Mathematics (M2, M1, Discrete)");
+    }
+  };
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -89,7 +108,11 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
       setSeatsLeft(5);
 
       // Instantly redirect to Krishna's number on WhatsApp carrying these details
-      const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}). I completed Intermediate with *${newReg.intermediateGroup}* and my expected branch is *${newReg.expectedBranch}*. I am highly interested in joining your *${newReg.interestedTuition}* tuition category starting classes! Please block my offline seat.`;
+      const batchMode = registrationType === "before" ? "Before B.Tech Batch" : "After B.Tech Batch";
+      const grpLabel = registrationType === "before" ? "Intermediate Group" : "Stream/Group";
+      const brchLabel = registrationType === "before" ? "Expected B.Tech Branch" : "B.Tech Branch/Specialization";
+
+      const msg = `Hi DV Krishna Sir! I just registered for the *${batchMode}* on your website under the name *${newReg.fullName}* (Phone: ${newReg.mobileNumber}).\n\n*Details:*\n- ${grpLabel}: *${newReg.intermediateGroup}*\n- ${brchLabel}: *${newReg.expectedBranch}*\n- Course Preferred: *${newReg.interestedTuition}*\n\nPlease block my offline seat.`;
       const waUrl = `https://wa.me/919704727292?text=${encodeURIComponent(msg)}`;
       
       try {
@@ -113,12 +136,15 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
   };
 
   const openWhatsAppDirect = () => {
-    const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}*. I completed Intermediate with *${submittedData?.intermediateGroup}* and want to secure my offline seat in *${submittedData?.interestedTuition || "B.Tech Tuitions"}* classes.`;
+    const batchMode = registrationType === "before" ? "Before B.Tech Batch" : "After B.Tech Batch";
+    const grpLabel = registrationType === "before" ? "Intermediate Group" : "Stream/Group";
+    const brchLabel = registrationType === "before" ? "Expected B.Tech Branch" : "B.Tech Branch/Specialization";
+    const msg = `Hi DV Krishna Sir! I just registered on your website under the name *${submittedData?.fullName}* for the *${batchMode}*.\n\n*Details:*\n- ${grpLabel}: *${submittedData?.intermediateGroup}*\n- ${brchLabel}: *${submittedData?.expectedBranch}*\n- Course: *${submittedData?.interestedTuition || "Selected Tuition"}`;
     window.open(`https://wa.me/919704727292?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="register" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
+    <section id="register" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 border-t border-white/5">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Left column: persuasive layout copy & stats */}
@@ -252,7 +278,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                       <p className="text-gray-300"><span className="text-gray-500">Phone:</span> {submittedData?.mobileNumber}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Group:</span> {submittedData?.intermediateGroup}</p>
                       <p className="text-gray-300"><span className="text-gray-500">Expected Branch:</span> {submittedData?.expectedBranch}</p>
-                      <p className="text-gray-300"><span className="text-gray-500">Selected Course:</span> {submittedData?.interestedTuition || "Coding & Programming (C, Java, Python)"}</p>
+                      <p className="text-gray-300"><span className="text-gray-500">Selected Course:</span> {submittedData?.interestedTuition || "Coding & Programming (C & Python)"}</p>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
@@ -281,8 +307,41 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="space-y-4 text-left"
+                    className="space-y-5 text-left"
                   >
+                    {/* Segmented Registration Selector */}
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">
+                        Select Registration Stream
+                      </label>
+                      <div className="grid grid-cols-2 gap-2 bg-brand-dark/95 p-1.5 rounded-2xl border border-white/5 shadow-inner">
+                        <button
+                          type="button"
+                          onClick={() => handleTypeChange("before")}
+                          className={`relative py-3.5 px-3 rounded-xl text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 select-none cursor-pointer ${
+                            registrationType === "before"
+                              ? "bg-gradient-to-r from-brand-secondary/90 to-brand-secondary text-white shadow-[0_0_20px_rgba(255,107,0,0.25)] border border-brand-secondary/30"
+                              : "text-gray-400 hover:text-white bg-transparent hover:bg-white/5 border border-transparent"
+                          }`}
+                        >
+                          <span className="text-[11px] uppercase tracking-wider font-extrabold">Before B.Tech</span>
+                          <span className="text-[9px] font-normal opacity-80">Foundation &amp; Programming</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleTypeChange("after")}
+                          className={`relative py-3.5 px-3 rounded-xl text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 select-none cursor-pointer ${
+                            registrationType === "after"
+                              ? "bg-gradient-to-r from-teal-500 to-brand-accent-blue text-white shadow-[0_0_20px_rgba(0,229,255,0.25)] border border-brand-accent-blue/30"
+                              : "text-gray-400 hover:text-white bg-transparent hover:bg-white/5 border border-transparent"
+                          }`}
+                        >
+                          <span className="text-[11px] uppercase tracking-wider font-extrabold">After B.Tech</span>
+                          <span className="text-[9px] font-normal opacity-80">University Maths &amp; Core</span>
+                        </button>
+                      </div>
+                    </div>
+
                     <div className="space-y-1">
                       <label htmlFor="fullName" className="text-xs font-bold text-gray-300 uppercase tracking-wider block">
                         Full Name First
@@ -319,7 +378,7 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label htmlFor="group" className="text-xs font-bold text-gray-300 uppercase tracking-wider block">
-                          Intermediate Group
+                          {registrationType === "before" ? "Intermediate Group" : "Current Stream / Year"}
                         </label>
                         <select
                           id="group"
@@ -328,16 +387,27 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                           className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:border-brand-secondary focus:outline-none transition-all"
                           disabled={loading}
                         >
-                          <option value="MPC">MPC (Maths, Physics, Chem)</option>
-                          <option value="MEC">MEC (Maths, Econ, Commerce)</option>
-                          <option value="BiPC">BiPC (Biology, Physics, Chem)</option>
-                          <option value="Other">Other Groups</option>
+                          {registrationType === "before" ? (
+                            <>
+                              <option value="MPC">MPC (Maths, Physics, Chem)</option>
+                              <option value="MEC">MEC (Maths, Econ, Commerce)</option>
+                              <option value="BiPC">BiPC (Biology, Physics, Chem)</option>
+                              <option value="Other">Other Groups</option>
+                            </>
+                          ) : (
+                            <>
+                              <option value="B.Tech Student (1st Year)">B.Tech Student (1st Year)</option>
+                              <option value="B.Tech Student (2nd/3rd Year)">B.Tech Student (2nd/3rd Year)</option>
+                              <option value="Diploma Student">Diploma Student</option>
+                              <option value="Other Degrees">Other Technical Stream</option>
+                            </>
+                          )}
                         </select>
                       </div>
 
                       <div className="space-y-1">
                         <label htmlFor="branch" className="text-xs font-bold text-gray-300 uppercase tracking-wider block">
-                          Expected B.Tech Branch
+                          {registrationType === "before" ? "Expected B.Tech Branch" : "B.Tech Branch / Specialization"}
                         </label>
                         <select
                           id="branch"
@@ -368,10 +438,18 @@ export default function RegistrationForm({ selectedCourse }: { selectedCourse?: 
                         className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:border-brand-secondary focus:outline-none transition-all"
                         disabled={loading}
                       >
-                        <option value="Coding & Programming (C, Java, Python)">Coding & Programming (C, Java, Python)</option>
-                        <option value="Engineering Mathematics (M1, M2, Probability, Discrete)">Engineering Mathematics (Maths)</option>
-                        <option value="B.Tech Core Subjects (DSA, DBMS, OS, DLD)">B.Tech Core Subjects</option>
-                        <option value="Ultimate All-In-One Tuition Bundle">Ultimate All-In-One Bundle (Maths + Core + Coding)</option>
+                        {registrationType === "before" ? (
+                          <>
+                            <option value="Coding & Programming (C & Python)">Coding & Programming (C & Python Batch)</option>
+                            <option value="Before B.Tech Bridge Course (Maths & Logic Foundations)">Before B.Tech Bridge Course (Maths & Logic Foundations)</option>
+                          </>
+                        ) : (
+                          <>
+                            <option value="Engineering Mathematics (M2, M1, Discrete)">Engineering Mathematics (Maths - M1, M2, Discrete)</option>
+                            <option value="B.Tech Core Subjects (DSA, DBMS, OS, DLD)">B.Tech Core Subjects (DSA, DBMS, OS, DLD)</option>
+                            <option value="Ultimate All-In-One Tuition Bundle">Ultimate All-In-One Tuition Bundle (Maths + Core + Coding)</option>
+                          </>
+                        )}
                       </select>
                     </div>
 

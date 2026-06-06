@@ -46,17 +46,16 @@ export default function WhatYouWillLearn({ onCourseSelect, highlightedCourseId }
       ctaText: "Join Core Subjects",
       highlightBorder: "border-brand-secondary ring-4 ring-brand-secondary/30 scale-[1.04] shadow-[0_0_40px_rgba(255,107,0,0.45)] z-20",
       bullets: [
-        "Data Structures & Algorithms (DS & DSA basics)",
-        "Database Management Systems (DBMS & SQL queries)",
-        "Operating Systems (OS) & Process management logic",
-        "Digital Electronics & Logic Design (DLD grids)",
-        "Artificial Intelligence (AI) & Machine Learning (ML)",
-        "Computer Networks (CN) & Software Engineering templates"
+        "CSE: Data Structures (DSA), DBMS & more",
+        "ECE: Digital Electronics (DLD), Signals & Systems & more",
+        "EEE: Network Theory, Electrical Circuits & more",
+        "CIVIL: Engineering Mechanics, Strength of Materials & more",
+        "Standard university labs guidance & paper scoring strategies"
       ]
     },
     {
       id: "service-programming",
-      registrationValue: "Coding & Programming (C, Java, Python)",
+      registrationValue: "Coding & Programming (C & Python)",
       title: "Coding & Programming",
       tech: "PRACTICAL LABS & LOGIC",
       description: "Go from absolute zero logic to compiling enterprise code. Gain immense confidence by programming live templates on real desktop machines.",
@@ -68,10 +67,10 @@ export default function WhatYouWillLearn({ onCourseSelect, highlightedCourseId }
       highlightBorder: "border-emerald-400 ring-4 ring-emerald-400/30 scale-[1.04] shadow-[0_0_40px_rgba(52,211,153,0.45)] z-20",
       bullets: [
         "C Programming (Problem-Solving & Core Fundamentals)",
-        "Java OOPs (Classes, Inheritance & Polymorphism)",
-        "Python (Automation, Libraries & clean syntax)",
-        "Interactive error debugging on local terminals",
-        "Dry-run practices for lab exams & future assessments"
+        "Basic Python (Variables, loops, functions & basic automation)",
+        "Comparative C vs Python (Dual-language mental mapping)",
+        "AI Coding Tools briefing (Gemini, ChatGPT prompting & tool hacks)",
+        "Interactive Mini Projects (Terminal games, tools & checkers)"
       ]
     }
   ];
@@ -85,8 +84,8 @@ export default function WhatYouWillLearn({ onCourseSelect, highlightedCourseId }
   };
 
   return (
-    <section id="services" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5">
-      <div className="text-center space-y-4 max-w-2xl mx-auto mb-10">
+    <section id="services" className="relative z-10 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 border-t border-white/5">
+      <div className="text-center space-y-4 max-w-2xl mx-auto mb-8">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,8 +176,8 @@ export default function WhatYouWillLearn({ onCourseSelect, highlightedCourseId }
 
               {/* Action indicator inside visual card */}
               <div className="pt-8 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/5 mt-6">
-                <div className="text-[11px] font-mono text-gray-500 font-medium select-none">
-                  • 15 Dedicated sessions each
+                <div className="text-[11px] font-mono text-gray-400 font-medium select-none">
+                  • 1:1 sessions with experienced faculty
                 </div>
                 <button
                   onClick={() => handleEnrollClick(course.registrationValue)}

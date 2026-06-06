@@ -12,35 +12,27 @@ interface HeroProps {
 }
 
 export default function Hero({ onCourseSelect }: HeroProps) {
-  const [activeCodeTab, setActiveCodeTab] = useState<"c" | "java" | "python">("c");
+  const [activeCodeTab, setActiveCodeTab] = useState<"c" | "python">("c");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const codeSnippets = {
     c: `#include <stdio.h>
 
 int main() {
-    printf("🚀 Hello B.Tech Future Engineers!\\n");
-    printf("🔥 Master C Fundamentals with DV Krishna Sir\\n");
+    printf("🚀 Hello Future Engineers!\\n");
+    printf("🔥 Learn programming with DV Krishna\\n");
     return 0;
 }`,
-    java: `public class FutureEngineer {
-    public static void main(String[] args) {
-        System.out.println("☕ Learning Java OOP Concepts");
-        System.out.println("💪 Building Strong Foundation");
-    }
-}`,
-    python: `def start_btech_journey():
-    skills = ["C", "Java", "Python"]
-    confidence = "HIGH"
-    print(f"🐍 Learning {skills} is Awesome!")
-    print("🌟 Enter College with coding superpowers")
+    python: `def start_basic_python():
+    skills = ["C", "Python"]
+    print("🐍 Learn basic python variables & functions")
 
-start_btech_journey()`
+start_basic_python()`
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveCodeTab((prev) => (prev === "c" ? "java" : prev === "java" ? "python" : "c"));
+      setActiveCodeTab((prev) => (prev === "c" ? "python" : "c"));
     }, 4500);
     return () => clearInterval(timer);
   }, []);
@@ -74,7 +66,7 @@ start_btech_journey()`
   };
 
   const handleJoinProgram = () => {
-    onCourseSelect?.("Coding & Programming (C, Java, Python)");
+    onCourseSelect?.("Coding & Programming (C & Python)");
     const element = document.getElementById("services");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -119,7 +111,7 @@ start_btech_journey()`
           <nav className="hidden md:flex items-center gap-1 bg-brand-primary/40 border border-white/5 px-2.5 py-1.5 rounded-2xl select-none text-xs font-semibold">
             {/* Item 1: Before B.Tech */}
             <button
-              onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
+              onClick={() => handleNavClick("Coding & Programming (C & Python)")}
               className="flex flex-col text-left cursor-pointer group px-3 py-1.5 bg-brand-secondary/10 border border-brand-secondary/35 rounded-xl shadow-[0_0_15px_rgba(255,107,0,0.12)] transition-all"
             >
               <div className="flex items-center gap-1.5 mb-0.5">
@@ -221,7 +213,7 @@ start_btech_journey()`
                 Course Tuitions & Core Tracks
               </div>
               <button
-                onClick={() => handleNavClick("Coding & Programming (C, Java, Python)")}
+                onClick={() => handleNavClick("Coding & Programming (C & Python)")}
                 className="w-full text-left py-3 px-3 bg-brand-secondary/10 border border-brand-secondary/35 rounded-xl flex flex-col gap-1.5 group cursor-pointer"
               >
                 <div className="flex items-center gap-2">
@@ -264,64 +256,80 @@ start_btech_journey()`
         </AnimatePresence>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-4 py-8 md:py-14 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* Pricing & Duration Info Banner in between Navigation and Hero Block */}
+      <div className="w-full max-w-7xl mx-auto px-4 -mt-2 mb-2 flex justify-start select-none">
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="inline-flex items-center gap-2 bg-brand-secondary/10 border border-brand-secondary/30 px-3 py-1.5 rounded-xl text-[11px] font-mono font-bold text-brand-secondary shadow-[0_0_15px_rgba(255,107,0,0.06)]"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-secondary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-secondary"></span>
+          </span>
+          <span>Price for Programming is 3000/- and duration is 7 weeks</span>
+        </motion.div>
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left column: Text copy & CTAs */}
         <motion.div 
-          className="lg:col-span-7 flex flex-col text-left space-y-6 md:space-y-8"
+          className="lg:col-span-7 flex flex-col text-left space-y-4 md:space-y-5"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 bg-brand-secondary/10 border border-brand-secondary/30 text-brand-secondary text-xs font-semibold px-4 py-1.5 rounded-full w-fit">
-            <Sparkles size={14} className="animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 bg-brand-secondary/10 border border-brand-secondary/35 text-brand-secondary text-[11px] font-semibold px-3 py-1 rounded-full w-fit">
+            <Sparkles size={13} className="animate-pulse" />
             Designed Specially for Intermediate Completed Students
           </div>
 
-          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-[2.75rem] text-white leading-tight tracking-tight">
             Start Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary via-yellow-400 to-[#00E5FF]">B.Tech Journey</span> Ahead of Others
           </h2>
 
-          <p className="font-sans text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl">
-            Learn <span className="text-white font-semibold underline decoration-brand-secondary decoration-2 decoration-solid">Engineering Maths, B.Tech Core Subjects, & Programming</span> before college begins. Build solid confidence, develop college coding habits, and top your university scores.
+          <p className="font-sans text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl">
+            Learn <span className="text-white font-semibold underline decoration-brand-secondary decoration-2 decoration-solid">C, Python, & AI Tools</span> before college begins. Build solid confidence, develop college coding habits, and top your university scores.
           </p>
 
           {/* Key Value Pillows */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-2">
-            <div className="flex items-center gap-2.5 text-xs text-gray-300">
-              <ShieldCheck className="text-[#00E5FF] shrink-0" size={18} />
-              <span>Guntur Offline Training</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-1 bg-white/[0.02] border border-white/5 rounded-xl max-w-lg">
+            <div className="flex items-center gap-1.5 text-[11px] text-gray-300 px-2 py-0.5">
+              <ShieldCheck className="text-[#00E5FF] shrink-0" size={15} />
+              <span>Guntur Offline</span>
             </div>
-            <div className="flex items-center gap-2.5 text-xs text-gray-300">
-              <Code className="text-brand-secondary shrink-0" size={18} />
+            <div className="flex items-center gap-1.5 text-[11px] text-gray-300 px-2 py-0.5">
+              <Code className="text-brand-secondary shrink-0" size={15} />
               <span>Maths, Core & Coding</span>
             </div>
-            <div className="flex items-center gap-2.5 text-xs text-gray-300 col-span-2 md:col-span-1">
-              <Cpu className="text-emerald-400 shrink-0" size={18} />
-              <span>Full Practical Labs</span>
+            <div className="flex items-center gap-1.5 text-[11px] text-gray-300 px-2 py-0.5 col-span-2 md:col-span-1">
+              <Cpu className="text-emerald-400 shrink-0" size={15} />
+              <span>Practical Labs</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <motion.button
               id="cta-join-now"
               onClick={handleJoinProgram}
-              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(255, 122, 0, 0.4)" }}
+              whileHover={{ scale: 1.02, boxShadow: "0 8px 18px -4px rgba(255, 122, 0, 0.4)" }}
               whileTap={{ scale: 0.98 }}
-              className="bg-gradient-to-r from-brand-secondary to-amber-500 hover:to-orange-600 text-white font-display font-bold px-8 py-4 rounded-xl text-md shadow-lg shadow-brand-secondary/20 cursor-pointer flex items-center justify-center gap-2 group transition-all"
+              className="bg-gradient-to-r from-brand-secondary to-amber-500 hover:to-orange-600 text-white font-display font-bold px-5 py-3 rounded-xl text-sm shadow-md shadow-brand-secondary/15 cursor-pointer flex items-center justify-center gap-2 group transition-all"
             >
               <span>Join Program Now</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
             <motion.button
               id="cta-whatsapp"
               onClick={openWhatsApp}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-brand-primary/60 border border-emerald-500/30 hover:border-emerald-500/60 hover:bg-brand-primary/80 text-white font-display font-semibold px-8 py-4 rounded-xl text-md cursor-pointer flex items-center justify-center gap-2 transition-all"
+              className="bg-brand-primary/60 border border-emerald-500/30 hover:border-emerald-500/60 hover:bg-brand-primary/80 text-white font-display font-semibold px-5 py-3 rounded-xl text-sm cursor-pointer flex items-center justify-center gap-2 transition-all"
             >
-              <MessageSquare className="text-emerald-400 stroke-[2.5px]" size={18} />
+              <MessageSquare className="text-emerald-400 stroke-[2.5px]" size={16} />
               <span className="text-emerald-400">WhatsApp Us Directly</span>
             </motion.button>
           </div>
@@ -335,28 +343,28 @@ start_btech_journey()`
           transition={{ duration: 1, delay: 0.2 }}
         >
           {/* Subtle Ambient Glow behind Simulator */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-[#00E5FF]/20 to-brand-secondary/20 rounded-2xl blur-3xl opacity-30 select-none pointer-events-none" />
+          <div className="absolute -inset-4 bg-gradient-to-r from-[#00E5FF]/20 to-brand-secondary/20 rounded-2xl blur-3xl opacity-20 select-none pointer-events-none" />
 
-          <div className="w-full glass border border-white/10 rounded-2xl shadow-2xl overflow-hidden text-left flex flex-col">
+          <div className="w-full glass border border-white/10 rounded-2xl shadow-xl overflow-hidden text-left flex flex-col">
             {/* Terminal Top Bar */}
-            <div className="flex items-center justify-between px-4 py-3 bg-brand-primary border-b border-white/5">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-500 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-amber-500 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
+            <div className="flex items-center justify-between px-3.5 py-2.5 bg-brand-primary border-b border-white/5">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-brand-dark/80 rounded-md border border-white/5">
-                <Terminal size={12} className="text-[#00E5FF]" />
-                <span className="font-mono text-[10px] text-gray-400 tracking-wide select-none">BTech_Blueprint.sh</span>
+              <div className="flex items-center gap-1 px-2.5 py-0.5 bg-brand-dark/80 rounded-md border border-white/5">
+                <Terminal size={11} className="text-[#00E5FF]" />
+                <span className="font-mono text-[9px] text-gray-400 tracking-wide select-none">BTech_Blueprint.sh</span>
               </div>
-              <div className="w-12" /> {/* alignment spacer */}
+              <div className="w-8" /> {/* alignment spacer */}
             </div>
 
             {/* Language Selection Tabs */}
-            <div className="flex bg-brand-dark/50 border-b border-white/5 select-none text-xs font-semibold">
+            <div className="flex bg-brand-dark/50 border-b border-white/5 select-none text-[11px] font-semibold">
               <button
                 onClick={() => setActiveCodeTab("c")}
-                className={`px-4 py-2.5 flex items-center gap-1.5 border-r border-white/5 transition-all text-left font-mono ${
+                className={`px-3 py-2 flex items-center gap-1 border-r border-white/5 transition-all text-left font-mono ${
                   activeCodeTab === "c" 
                     ? "text-[#00E5FF] bg-brand-primary border-b-2 border-b-[#00E5FF]" 
                     : "text-gray-400 hover:text-white"
@@ -365,18 +373,8 @@ start_btech_journey()`
                 <span>C</span>
               </button>
               <button
-                onClick={() => setActiveCodeTab("java")}
-                className={`px-4 py-2.5 flex items-center gap-1.5 border-r border-white/5 transition-all text-left font-mono ${
-                  activeCodeTab === "java" 
-                    ? "text-brand-secondary bg-brand-primary border-b-2 border-b-brand-secondary" 
-                    : "text-gray-400 hover:text-white"
-                }`}
-              >
-                <span>Java</span>
-              </button>
-              <button
                 onClick={() => setActiveCodeTab("python")}
-                className={`px-4 py-2.5 flex items-center gap-1.5 transition-all text-left font-mono ${
+                className={`px-3 py-2 flex items-center gap-1 transition-all text-left font-mono ${
                   activeCodeTab === "python" 
                     ? "text-emerald-400 bg-brand-primary border-b-2 border-b-emerald-400" 
                     : "text-gray-400 hover:text-white"
@@ -387,14 +385,14 @@ start_btech_journey()`
             </div>
 
             {/* Code Body */}
-            <div className="p-5 font-mono text-xs overflow-x-auto min-h-[200px] h-[240px] bg-brand-dark/95 leading-relaxed relative flex flex-col justify-between">
+            <div className="p-4 font-mono text-[11px] overflow-x-auto min-h-[140px] h-[160px] bg-brand-dark/95 leading-relaxed relative flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.pre
                   key={activeCodeTab}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
                   className="whitespace-pre text-gray-300"
                 >
                   <code>{codeSnippets[activeCodeTab]}</code>
@@ -402,23 +400,23 @@ start_btech_journey()`
               </AnimatePresence>
 
               {/* Status footer inside prompt */}
-              <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-500">
+              <div className="mt-auto pt-2.5 border-t border-white/5 flex items-center justify-between text-[10px] text-gray-500">
                 <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Live Simulation</span>
                 <span>CTRL + ENTER to execute</span>
               </div>
             </div>
 
             {/* Floating Premium Badge in the visual */}
-            <div className="px-5 py-4 bg-brand-primary/40 border-t border-white/5 flex items-center gap-3">
+            <div className="px-4 py-2.5 bg-brand-primary/40 border-t border-white/5 flex items-center gap-2.5">
               <img
                 src="https://picsum.photos/seed/coding/80/80"
                 alt="BTech Coding Student"
-                className="w-10 h-10 rounded-lg object-cover border border-white/10 shrink-0"
+                className="w-8 h-8 rounded-lg object-cover border border-white/10 shrink-0"
                 referrerPolicy="no-referrer"
               />
               <div className="text-left">
-                <h4 className="text-white font-semibold text-xs">Unlock Practical Coding Habits</h4>
-                <p className="text-[11px] text-gray-400 font-medium">Over 230+ students joined last season</p>
+                <h4 className="text-white font-semibold text-[11px] leading-none">Unlock Practical Coding Habits</h4>
+                <p className="text-[10px] text-gray-400 font-medium">Over 230+ students joined last season</p>
               </div>
             </div>
           </div>

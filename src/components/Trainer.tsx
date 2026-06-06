@@ -8,7 +8,7 @@ import { Star } from "lucide-react";
 
 export default function Trainer() {
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-10 md:py-14 border-t border-white/5 overflow-hidden">
+    <section className="relative z-10 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 border-t border-white/5 overflow-hidden">
       {/* Background glow specific to trainer */}
       <div className="absolute top-1/2 -left-1/4 w-[300px] h-[300px] rounded-full bg-[#00E5FF]/5 blur-[80px] pointer-events-none select-none" />
 
